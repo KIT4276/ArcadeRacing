@@ -1,18 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseInput : MonoBehaviour
+namespace Racing
 {
-    // Start is called before the first frame update
-    void Start()
+    public abstract class BaseInput : MonoBehaviour
     {
-        
-    }
+        public float Acceleration { get; protected set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float Rotate { get; protected set; }
+
+        public event Action<bool> OnHandBrakeEvent;
+
+        protected abstract void FixedUpdate();
+        protected abstract void Start();
+
+        protected void CallHandBrake(bool value)
+            => OnHandBrakeEvent?.Invoke(value);
     }
 }
