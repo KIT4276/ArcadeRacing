@@ -51,7 +51,14 @@ namespace Racing
             _wheels = GetComponent<Wheels>();
             _baseInput = GetComponent<BaseInput>();
             _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.centerOfMass = _centerOfMass;
             _baseInput.OnHandBrakeEvent += OnHandBrake;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(transform.TransformPoint(_centerOfMass), .3f);
         }
 
         private void OnDestroy()

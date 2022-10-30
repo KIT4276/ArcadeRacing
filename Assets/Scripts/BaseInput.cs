@@ -14,8 +14,6 @@ namespace Racing
         public event Action<bool> OnHandBrakeEvent;
 
         protected abstract void FixedUpdate();
-        protected abstract void Start();
-
         protected void CallHandBrake(bool value)
             => OnHandBrakeEvent?.Invoke(value);
     }
