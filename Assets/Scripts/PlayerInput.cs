@@ -32,11 +32,18 @@ namespace Racing
             Acceleration = _controls.Car.Acceleration.ReadValue<float>();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<Finish>() != null)
+            {
+                Debug.Log("Fin!");
+                Acceleration = 0f;
+                _controls.Car.Disable();
+            }
+        }
+
         private void OnEnable()
             =>_controls.Car.Enable();
-
-        private void OnDisable()
-           => _controls.Car.Disable();
 
         private void OnDestroy()
             => _controls.Dispose();

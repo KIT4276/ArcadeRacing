@@ -12,11 +12,12 @@ namespace Racing
         private float _acceleration = 1;
         [SerializeField]
         private BotTargetPoint[] _points;
+        [SerializeField]
+        private float _slowDownTime = 3;
 
         private void Start()
         {
             OnRotate();
-
             Acceleration = _acceleration;
         }
         protected override void FixedUpdate()
@@ -27,7 +28,7 @@ namespace Racing
         private float GetAngle()
         {
             var targetPos = _points[_index].transform.position;
-            Debug.Log(_points[_index].transform.name);
+
             targetPos.y = transform.position.y;
 
             var direction = targetPos - transform.position;
@@ -41,10 +42,18 @@ namespace Racing
             {
                 _index++;
                 OnRotate();
+                StartCoroutine(SlowDown());
             }
         }
 
+        private IEnumerator SlowDown()
+        {
+            Acceleration = 0;
+            yield return new WaitForSeconds(_slowDownTime);
+            Acceleration = _acceleration;
+        }
+
         private void OnRotate()
-            => Rotate = Mathf.Clamp(Rotate + GetAngle() * (Time.fixedDeltaTime), -1f, 1f);
+            => Rotate = Mathf.Clamp(Rotate + GetAngle() * (Time.fixedDeltaTime), -0.5f, 0.5f);
     }
 }
