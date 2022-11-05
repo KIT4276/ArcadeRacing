@@ -20,6 +20,15 @@ namespace Racing
         [SerializeField]
         private Vector3 _centerOfMass;
 
+        private void Start()
+        {
+            _wheels = GetComponent<Wheels>();
+            _baseInput = GetComponent<BaseInput>();
+            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.centerOfMass = _centerOfMass;
+            _baseInput.OnHandBrakeEvent += OnHandBrake;
+        }
+
         private void FixedUpdate()
         {
             _wheels.UpdateVisual(_baseInput.Rotate * _maxSteerAngle);
@@ -44,15 +53,6 @@ namespace Racing
                 foreach (var wheel in _wheels.GetRearWheels)
                     wheel.brakeTorque = 0f;
             }
-        }
-
-        private void Start()
-        {
-            _wheels = GetComponent<Wheels>();
-            _baseInput = GetComponent<BaseInput>();
-            _rigidbody = GetComponent<Rigidbody>();
-            _rigidbody.centerOfMass = _centerOfMass;
-            _baseInput.OnHandBrakeEvent += OnHandBrake;
         }
 
         private void OnDrawGizmos()

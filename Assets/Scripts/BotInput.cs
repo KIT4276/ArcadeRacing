@@ -8,16 +8,20 @@ namespace Racing
     {
         private int _index;
 
+        [SerializeField, Range(0.1f, 3f)]
+        private float _acceleration = 1;
         [SerializeField]
         private BotTargetPoint[] _points;
 
         private void Start()
         {
-            GetAngle();
+            OnRotate();
+
+            Acceleration = _acceleration;
         }
         protected override void FixedUpdate()
         {
-            Acceleration = 1f;
+            OnRotate();
         }
 
         private float GetAngle()
@@ -28,7 +32,7 @@ namespace Racing
 
             var direction = targetPos - transform.position;
 
-            return Vector3.SignedAngle(direction, transform.forward, transform.up);
+            return Vector3.SignedAngle( transform.forward, direction, transform.up);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -36,8 +40,11 @@ namespace Racing
             if(other.GetComponent<BotTargetPoint>() != null)
             {
                 _index++;
-                GetAngle();
+                OnRotate();
             }
         }
+
+        private void OnRotate()
+            => Rotate = Mathf.Clamp(Rotate + GetAngle() * (Time.fixedDeltaTime), -1f, 1f);
     }
 }
