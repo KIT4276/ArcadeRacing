@@ -15,14 +15,15 @@ namespace Racing
         [SerializeField]
         private float _slowDownTime = 3;
 
-        private void Start()
-        {
-            OnRotate();
-            Acceleration = _acceleration;
-        }
+        //private void Start()
+        //{
+        //    OnRotate();
+        //}
         protected override void FixedUpdate()
         {
+            if (!Countdown._isStarted) return;
             OnRotate();
+            Acceleration = _acceleration;
         }
 
         private float GetAngle()

@@ -17,6 +17,8 @@ namespace Racing
 
         protected override void FixedUpdate()
         {
+            if (!Countdown._isStarted) return;
+            
             var direction = _controls.Car.Rotate.ReadValue<float>();
 
             if(direction == 0f && Rotate != 0f)
@@ -38,6 +40,7 @@ namespace Racing
             {
                 Debug.Log("Fin!");
                 Acceleration = 0f;
+                Finish._isFinish = true;
                 _controls.Car.Disable();
             }
         }
