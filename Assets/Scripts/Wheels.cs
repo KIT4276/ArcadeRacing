@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Racing
 {
@@ -23,6 +21,10 @@ namespace Racing
 
         public WheelCollider[] GetAllWheels => _allWheelsColliders;
 
+        private void Start()
+           => _allWheelsColliders = new WheelCollider[] { _wheelsColliderFront[0],
+                _wheelsColliderFront[1], _wheelsColliderRear[0], _wheelsColliderRear[1] };
+
         public void UpdateVisual(float angle)
         {
             for (int i = 0; i < _wheelsFront.Length; i++)
@@ -34,11 +36,6 @@ namespace Racing
                 _wheelsColliderRear[i].GetWorldPose(out  pos, out  rotate);
                 _wheelsRear[i].SetPositionAndRotation(pos, rotate);
             }
-        }
-
-        private void Start()
-        {
-            _allWheelsColliders = new WheelCollider[] { _wheelsColliderFront[0], _wheelsColliderFront[1], _wheelsColliderRear[0], _wheelsColliderRear[1] };
         }
     }
 }

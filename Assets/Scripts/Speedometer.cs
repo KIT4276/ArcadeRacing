@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,9 +25,7 @@ namespace Racing
         private Text _text;
 
         private void Start()
-        {
-            StartCoroutine(Speed());
-        }
+            => StartCoroutine(Speed());
 
         private IEnumerator Speed()
         {

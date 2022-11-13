@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Racing
@@ -15,10 +14,6 @@ namespace Racing
         [SerializeField]
         private float _slowDownTime = 3;
 
-        //private void Start()
-        //{
-        //    OnRotate();
-        //}
         protected override void FixedUpdate()
         {
             if (!Countdown._isStarted) return;

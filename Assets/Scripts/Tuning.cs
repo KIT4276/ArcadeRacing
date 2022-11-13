@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tuning : MonoBehaviour
+namespace Racing
 {
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(Car))]
+    public class Tuning : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

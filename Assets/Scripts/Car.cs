@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Racing
 {
@@ -20,6 +18,14 @@ namespace Racing
         [SerializeField]
         private Vector3 _centerOfMass;
 
+        public float MaxSteerAngle { get; private set; }
+        public float Torque { get; private set;}
+
+        private void Awake()
+        {
+            MaxSteerAngle = _maxSteerAngle;
+            Torque = _torque;
+        }
         private void Start()
         {
             _wheels = GetComponent<Wheels>();
@@ -62,8 +68,6 @@ namespace Racing
         }
 
         private void OnDestroy()
-        {
-            _baseInput.OnHandBrakeEvent -= OnHandBrake;
-        }
+            => _baseInput.OnHandBrakeEvent -= OnHandBrake;
     }
 }

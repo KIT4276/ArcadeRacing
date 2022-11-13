@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Racing
 {
     public class PlayerInput : BaseInput
     {
         private Controls _controls;
+
+        [SerializeField]
+        private GameObject _enterPanel;
+        [SerializeField]
+        private GameObject _resultsPanel;
 
         private void Awake()
         {
@@ -38,10 +41,11 @@ namespace Racing
         {
             if (other.GetComponent<Finish>() != null)
             {
-                Debug.Log("Fin!");
                 Acceleration = 0f;
                 Finish._isFinish = true;
                 _controls.Car.Disable();
+                _enterPanel.SetActive(true);
+                _resultsPanel.SetActive(true);
             }
         }
 

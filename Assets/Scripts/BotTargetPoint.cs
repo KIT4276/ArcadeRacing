@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Racing
 {
     public class BotTargetPoint : MonoBehaviour
     {
-       
 
         private void OnDrawGizmos()
         {
