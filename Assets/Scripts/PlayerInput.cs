@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Racing
 {
@@ -8,8 +9,7 @@ namespace Racing
 
         [SerializeField]
         private GameObject _enterPanel;
-        [SerializeField]
-        private GameObject _resultsPanel;
+        
 
         private void Awake()
         {
@@ -44,9 +44,24 @@ namespace Racing
                 Acceleration = 0f;
                 Finish._isFinish = true;
                 _controls.Car.Disable();
-                _enterPanel.SetActive(true);
-                _resultsPanel.SetActive(true);
+                StartCoroutine(MovePanel(_enterPanel));
+                
             }
+        }
+
+        public IEnumerator MovePanel(GameObject panel)
+        {
+            var currentTime = 0f;
+            var startPos = panel.GetComponent<RectTransform>().transform.position;
+            var targetPos = new Vector3(startPos.x, startPos.y + 532, startPos.z);
+
+            while (currentTime < 2)
+            {
+                panel.GetComponent<RectTransform>().transform.position = Vector2.Lerp(startPos, targetPos, currentTime / 2);
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+            panel.GetComponent<RectTransform>().transform.position = targetPos;
         }
 
         private void OnEnable()
