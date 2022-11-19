@@ -14,7 +14,6 @@ namespace Racing
         private void Start()
         {
             _names = new string[9];
-            //_names = FillNames();
             FillNames();
         }
 
@@ -27,9 +26,6 @@ namespace Racing
                     _names[i] = LoadingJSON<string>();
                 }
             }
-            //return LoadingJSON<string>();
-
-            
         }
 
         public static T LoadingJSON<T>()

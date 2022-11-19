@@ -37,18 +37,12 @@ namespace Racing
             string json = JsonUtility.ToJson(data);
 
             File.AppendAllText(_path, json + "\n");
-
         }
 
         public void LoadLeader()
         {
             var r =  JsonUtility.FromJson<Data>(File.ReadAllText(_path));
             Debug.Log(r);
-        }
-
-        public void Save()
-        {
-
         }
     }
 }

@@ -1053,7 +1053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437870455}
   m_LocalRotation: {x: -0.38354537, y: -0, z: 0.92352206, w: 0}
-  m_LocalPosition: {x: -143.33, y: 22.54, z: 96.77709}
+  m_LocalPosition: {x: -54.3, y: 10.5, z: 35.6}
   m_LocalScale: {x: 12.745487, y: 8.850559, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1580,19 +1580,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1882848988}
-        m_MethodName: SaveText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1882848988}
-        m_MethodName: ShowText
+      - m_Target: {fileID: 1883559851}
+        m_MethodName: SaveLeader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4200,6 +4189,7 @@ GameObject:
   - component: {fileID: 1883559849}
   - component: {fileID: 1883559848}
   - component: {fileID: 1883559850}
+  - component: {fileID: 1883559851}
   m_Layer: 5
   m_Name: EnterPanel
   m_TagString: Untagged
@@ -4277,8 +4267,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18d94f9c8460c24cae76b0951654d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data:
-    _name: 
+--- !u!114 &1883559851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883559846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5e5504d9a11344f95e003f22b26b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 1142623029}
 --- !u!1 &1886860426
 GameObject:
   m_ObjectHideFlags: 0

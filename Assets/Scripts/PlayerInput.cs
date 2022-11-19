@@ -45,7 +45,6 @@ namespace Racing
                 Finish._isFinish = true;
                 _controls.Car.Disable();
                 StartCoroutine(MovePanel(_enterPanel));
-                
             }
         }
 
